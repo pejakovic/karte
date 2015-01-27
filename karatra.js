@@ -1,5 +1,15 @@
+exports.deal = function(cardCount){
+  var mainPile = new Pile();
+  mainPile.shuffle();
+  for (i = 0; i < cardCount; i++) {
+    mainPile.putCard(i);
+  }
+  mainPile.shuffle();
+  return JSON.stringify(mainPile);
+};
 
-function State() {
+
+var State = function() {
     this.attributes = {};
     this.effects = [ {"target":"Health", "modifier":"+1"} ];
 
@@ -44,9 +54,9 @@ function State() {
                 newattrs[target]["value"] = eval("newattrs[target][\"value\"]" + effect["modifier"]);
             }
         } 
-        return newattrs
+        return newattrs;
     }
-}
+};
 
 function Pile() {
     this.id = "Pile"+Pile.counter++; 
@@ -72,8 +82,8 @@ function Pile() {
             this.cards[randomIndex] = temporaryValue;
         }
     }
+};
 
-}
 Pile.counter = 0;
 
 function Player() {
@@ -90,7 +100,7 @@ for (i = 0; i < 100; i++) {
 p.shuffle();
 
 for (i = 0; i < 100; i++) {
-    console.log(p.getCard());
+  //  console.log(p.getCard());
 }
 
 
